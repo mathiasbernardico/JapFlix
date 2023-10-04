@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Almacenar los datos en una variable sin mostrarlos
         const moviesData = responseData;
   
-        // Puedes acceder a los datos a través de la variable "moviesData" en este punto
         console.log('Datos de películas cargados:', moviesData);
       }
     };
