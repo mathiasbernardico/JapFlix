@@ -26,6 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
       itemlista.classList.add("item-lista");
       itemlista.innerHTML =
         `<h2>${pelicula.title}</h2>
+          <div class="dropdown">
+            <a href="#">More</a>
+              <ul class="menu">
+                <li><a href="#"> Year: ${pelicula.release_date} </a></li>
+                <li><a href="#"> Runtime: ${pelicula.runtime}</a></li>
+                <li><a href="#"> Budget: ${pelicula.budget}</a></li>
+                <li><a href="#"> Revenue: ${pelicula.revenue}</a></li>
+              </ul>
+          </div> 
         <p>${pelicula.tagline}</p>
         <p>Puntaje: ${pelicula.vote_average} / 10</p>`;
       lista.appendChild(itemlista);
