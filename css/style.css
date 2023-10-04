@@ -30,10 +30,6 @@ main {
     color: aliceblue !important;
 }
 
-.item-lista{
-    position: relative;
-}
-
 li h2{
     width: 750px;
 }

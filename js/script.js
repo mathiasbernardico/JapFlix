@@ -38,9 +38,35 @@ document.addEventListener('DOMContentLoaded', function () {
         <p>${pelicula.tagline}</p>
         <p>Puntaje: ${pelicula.vote_average} / 10</p>`;
       lista.appendChild(itemlista);
+      
+      itemlista.addEventListener("click", function () {
+        mostrarContenedorSuperior(pelicula);
+      })
     });
   }
 
+  function mostrarContenedorSuperior(pelicula){
+   const contenedorSuperior = document.createElement("div");
+    contenedorSuperior.innerHTML =
+    `
+    <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+     <div class="offcanvas-header"> 
+    <buton type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></buton> 
+    </div> 
+    <div class="offcanvas-body">
+     <h1>${pelicula.title} : ${pelicula.geners}</h1> 
+     ${pelicula.overview}
+      </div>
+      </div> 
+      `;
+  
+document.body.appendChild(contenedorSuperior);
+
+const cerrar = contenedorSuperior.querySelector(".btn-close");
+ cerrar.addEventListener("click", function () {
+  contenedorSuperior.remove();
+ })
+  }
   btnBuscar.addEventListener('click', function () {
     const busqueda = inputBuscar.value.trim().toLowerCase();
     if (busqueda !== "") {
