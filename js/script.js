@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const canvas = document.getElementById("offcanvas");
     const h1 = document.getElementById("h1canvas");
     const p1 = document.getElementById("p1canvas");
+    //Agrega los elementos al canvas
     h1.innerHTML = pelicula.title + ":" + pelicula.genres.map((genre) => genre.name.toLowerCase()).join(', ');
     p1.innerHTML = pelicula.overview;
     if (canvas.style.display === 'none' || canvas.style.display === '') {
