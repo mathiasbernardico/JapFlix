@@ -46,26 +46,22 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function mostrarContenedorSuperior(pelicula){
-   const contenedorSuperior = document.createElement("div");
-    contenedorSuperior.innerHTML =
-    `
-    <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-     <div class="offcanvas-header"> 
-    <buton type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></buton> 
-    </div> 
-    <div class="offcanvas-body">
-     <h1>${pelicula.title} : ${pelicula.geners}</h1> 
-     ${pelicula.overview}
-      </div>
-      </div> 
-      `;
-  
-document.body.appendChild(contenedorSuperior);
+    const canvas = document.getElementById("offcanvas");
+    const h1 = document.getElementById("h1canvas");
+    const p1 = document.getElementById("p1canvas");
+    h1.innerHTML = pelicula.title + ":" + pelicula.genres.map((genre) => genre.name.toLowerCase()).join(', ');
+    p1.innerHTML = pelicula.overview;
+    if (canvas.style.display === 'none' || canvas.style.display === '') {
+      // Si está oculto, muestra el canvas cambiando su estilo de visualización
+      canvas.classList.add("show");
+      canvas.style.visibility = "hidden";
+      canvas.style.visibility = "visible";
+      canvas.style.display = 'block';
 
-const cerrar = contenedorSuperior.querySelector(".btn-close");
- cerrar.addEventListener("click", function () {
-  contenedorSuperior.remove();
- })
+    } else {
+      // Si ya está visible, oculta el canvas
+      canvas.style.display = 'none';
+    }
   }
   btnBuscar.addEventListener('click', function () {
     const busqueda = inputBuscar.value.trim().toLowerCase();
