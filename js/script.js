@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
       function calificacion(puntaje) {
         const estrellasLlenas = Math.floor(puntaje / 2); // Calcula el número de estrellas llenas
         const estrellasVacias = 5 - estrellasLlenas; // Calcula el número de estrellas vacías
-      
         let calificacionHtml = ''; // Inicializa una cadena vacía para construir el HTML de las estrellas
       
         for (let i = 0; i < estrellasLlenas; i++) {
