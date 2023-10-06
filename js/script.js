@@ -4,7 +4,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const lista = document.getElementById("lista");
   const inputBuscar = document.getElementById("inputBuscar");
   const btnBuscar = document.getElementById("btnBuscar");
-
+  const estrellas = [
+    '<span class="fa fa-star"></span>',
+    '<span class="fa fa-star"></span>',
+    '<span class="fa fa-star"></span>',
+    '<span class="fa fa-star"></span>',
+    '<span class="fa fa-star"></span>',
+  ];
   let moviesData = [];
 
   function buscarPelicula(query) {
@@ -18,12 +24,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     return encontradas;
   }
-
-  function mostrarPeliculas(peliculas) {
+  
+    function mostrarPeliculas(peliculas) {
     lista.innerHTML = "";
     peliculas.forEach((pelicula) => {
+      const puntaje = pelicula.vote_average;
       const itemlista = document.createElement("li");
       itemlista.classList.add("item-lista");
+      function calificacion(puntaje) {
+        const estrellasLlenas = Math.floor(puntaje / 2); // Calcula el número de estrellas llenas
+        const estrellasVacias = 5 - estrellasLlenas; // Calcula el número de estrellas vacías
+      
+        let calificacionHtml = ''; // Inicializa una cadena vacía para construir el HTML de las estrellas
+      
+        for (let i = 0; i < estrellasLlenas; i++) {
+          calificacionHtml += '<span class="fa fa-star checked"></span>';
+        }
+      
+        for (let i = 0; i < estrellasVacias; i++) {
+          calificacionHtml += '<span class="fa fa-star"></span>';
+        }
+      
+        return calificacionHtml; // Devuelve el HTML de las estrellas
+      }
+      const calificacionCreada = calificacion(puntaje);
       itemlista.innerHTML =
         `<h2>${pelicula.title}</h2>
           <div class="dropdown">
@@ -36,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
               </ul>
           </div> 
         <p>${pelicula.tagline}</p>
-        <p>Puntaje: ${pelicula.vote_average} / 10</p>`;
+        <p>Puntaje: ${calificacionCreada}</p>`;
       lista.appendChild(itemlista);
       
       itemlista.addEventListener("click", function () {
