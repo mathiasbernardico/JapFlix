@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < estrellasLlenas; i++) {
           calificacionHtml += '<span class="fa fa-star checked"></span>';
         }
-      
+    
         for (let i = 0; i < estrellasVacias; i++) {
           calificacionHtml += '<span class="fa fa-star"></span>';
         }
